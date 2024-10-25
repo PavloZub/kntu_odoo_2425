@@ -5,5 +5,7 @@ class UniversityClasses(models.Model):
     _description = "University Classes"
 
     name = fields.Char(string="Name")
-    learning_year = fields.Char(string="Learning Year")
+    year_id = fields.Many2one("university.year", string="Learning Year")
+    plan_ids = fields.One2many("university.plan", inverse_name="class_id",string="Plans")
     active = fields.Boolean(string="Active",default=True)
+
